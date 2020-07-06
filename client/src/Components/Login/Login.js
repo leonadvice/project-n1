@@ -1,5 +1,15 @@
 import React from 'react';
 
 export default () => {
-  return <div>This is the login page</div>;
+  return (
+    <div>
+      Email: <input type="text" id="email" />
+      <br />
+      Password: <input type="password" id="password" />
+      <br />
+      Confirm Password: <input type="password" id="confirmPassword" />
+      <br />
+      <input type="button" value="login" />
+    </div>
+  );
 };

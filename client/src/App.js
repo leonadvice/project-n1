@@ -4,6 +4,7 @@ import './App.css';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Main from './Components/Main/Main';
+import NotFound from './Components/NotFound/NotFound';
 
 const App = () => {
   const [refreshToken, setRefreshToken] = useState('');
@@ -36,15 +37,8 @@ const App = () => {
         });
         if (validTokens) {
           setLocalStorage(validTokens);
-          console.log('token is valid, redirect to user page');
-        } else {
-          console.log('token is not valid, redirect to login page');
         }
       })();
-    } else {
-      console.log(
-        'there is no refresh token in local storage, redirect user to login page'
-      );
     }
   }, []);
 
@@ -52,7 +46,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Main />
+          <Main data={(refreshToken, accessToken, setAcessToken, serverURL)} />
         </Route>
         <Route exact path="/login">
           <Login />
@@ -60,6 +54,7 @@ const App = () => {
         <Route exact path="/register">
           <Register />
         </Route>
+        <Route component={NotFound} />
       </Switch>
     </Router>
   );
