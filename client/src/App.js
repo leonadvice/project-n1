@@ -43,20 +43,21 @@ const App = () => {
   }, []);
 
   return (
-    <Router basename="/chat-app">
-      <Switch>
-        <Route exact path="/">
-          <Main data={(refreshToken, accessToken, setAcessToken, serverURL)} />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/register">
-          <Register />
-        </Route>
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    // <Router>
+    //   <Switch>
+    //     <Route exact path="/">
+    //       <Main data={(refreshToken, accessToken, setAcessToken, serverURL)} />
+    //     </Route>
+    //     <Route exact path="/login">
+    //       <Login />
+    //     </Route>
+    //     <Route exact path="/register">
+    //       <Register />
+    //     </Route>
+    //     <Route component={NotFound} />
+    //   </Switch>
+    // </Router>
+    <div>This is a test</div>
   );
 };
 
