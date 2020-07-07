@@ -1,4 +1,4 @@
-GET http://localhost:3001/
+POST http://localhost:3001/token
 
 ###
 
@@ -9,3 +9,9 @@ GET http://localhost:3001/register
 
 ###
 GET http://localhost:3001/logout
+
+###
+
+GET http://localhost:3001/
+
+###
