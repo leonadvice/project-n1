@@ -43,7 +43,7 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
+    <Router basename="/chat-app">
       <Switch>
         <Route exact path="/">
           <Main data={(refreshToken, accessToken, setAcessToken, serverURL)} />
