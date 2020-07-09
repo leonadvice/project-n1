@@ -7,10 +7,6 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get('/login', (req, res) => {
-  res.json('This is the login p');
-});
-
 router.post('/token', (req, res) => {
   res.json(false);
 });

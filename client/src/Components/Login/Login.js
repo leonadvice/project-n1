@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import checkLogin from '../../Controllers/checkLogin';
 
 export default () => {
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    checkLogin(setIsLogin);
+  }, []);
+
   return (
     <div>
       Email: <input type="text" id="email" />
