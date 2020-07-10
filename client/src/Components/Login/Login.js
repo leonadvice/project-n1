@@ -11,8 +11,7 @@ export default () => {
   }, []);
 
   if (isLogin) {
-    console.log(isLogin);
-    return <Redirect to="./" />;
+    return <Redirect to="/" />;
   }
   return (
     <div>

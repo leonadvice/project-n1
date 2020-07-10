@@ -9,10 +9,33 @@ const userSchema = new Schema({
 });
 
 const User = mongoose.model('User', userSchema);
+const TempUser = mongoose.model('TempUser', userSchema);
 
 class UserModel {
   constructor(id) {
     this.id = id;
+  }
+
+  static async findOneTempByEmail(email) {
+    return await TempUser.findOne({ email: email }, { _id: 1 }, (err, data) => {
+      if (err) {
+        console.log(`this is error message: ${err}`);
+        return false;
+      }
+      console.log(data);
+      return data;
+    });
+  }
+
+  static async findOneTempByHandle(handle) {
+    return await TempUser.findOne({ handle: handle }, { _id: 1 }, (err, data) => {
+      if (err) {
+        console.log(`this is error message: ${err}`);
+        return false;
+      }
+      console.log(data);
+      return data;
+    });
   }
 
   static async findOneByEmail(email) {
@@ -38,7 +61,7 @@ class UserModel {
   }
 
   static createNewUser(user) {
-    const newUser = new User();
+    const newUser = new TempUser();
     newUser.email = user.email;
     newUser.password = user.password;
     newUser.handle = user.handle;
