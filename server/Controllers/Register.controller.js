@@ -1,7 +1,7 @@
 const UserModel = require('../Models/User.model');
 
 const controller = (req, res) => {
-  UserModel.createNewUser();
+  UserModel.findOneByHandle('testt');
   res.json('a new user was created');
 };
 

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const UserModel = require('../Controllers/Register.controller');
+const RegisterController = require('../Controllers/Register.controller');
 
 //Middleware specificly for these routes only
 router.use((req, res, next) => {
@@ -12,6 +12,6 @@ router.post('/token', (req, res) => {
   res.json(true);
 });
 
-router.post('/test', UserModel);
+router.post('/register', RegisterController);
 
 module.exports = router;
