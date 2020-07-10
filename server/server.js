@@ -5,6 +5,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+//DATABASE STUFF
+const mongoose = require('mongoose');
+const DBKEY = process.env.DBKEY;
+mongoose.connect(DBKEY, { useNewUrlParser: true, useUnifiedTopology: true });
+
 const PORT = process.env.PORT || 3000;
 
 const authRoutes = require('./Routes/authRoutes');
