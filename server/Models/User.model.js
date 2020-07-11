@@ -1,5 +1,14 @@
+const nodeMailer = require('nodemailer');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
+const transporter = nodeMailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.email,
+    pass: process.env.pass,
+  },
+});
 
 const userSchema = new Schema({
   email: { type: String, required: true },
@@ -16,6 +25,11 @@ class UserModel {
     this.id = id;
   }
 
+  static async test() {
+    // console.log(process.env.email);
+    console.log('test');
+  }
+
   static async findOneTempByEmail(email) {
     return await TempUser.findOne({ email: email }, { _id: 1 }, (err, data) => {
       if (err) {
@@ -23,6 +37,7 @@ class UserModel {
         return false;
       }
       console.log(data);
+      console.log('this code run');
       return data;
     });
   }
