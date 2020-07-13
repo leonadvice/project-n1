@@ -25,11 +25,6 @@ class UserModel {
     this.id = id;
   }
 
-  static async test() {
-    // console.log(process.env.email);
-    console.log('test');
-  }
-
   static async findOneTempByEmail(email) {
     return await TempUser.findOne({ email: email }, { _id: 1 }, (err, data) => {
       if (err) {

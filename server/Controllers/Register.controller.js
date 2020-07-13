@@ -1,15 +1,11 @@
 const UserModel = require('../Models/User.model');
+const FormChecker = require('./ServerWorker/FormChecker');
 
-const controller = async (req, res) => {
-  UserModel.createNewUser({
-    email: 'test3',
-    name: 'test3',
-    password: 'test3',
-    handle: 'test3',
-  });
-  UserModel.test();
-  // console.log(await UserModel.findOneByEmail('test'));
+const Register = async (req, res) => {
+  const userForm = new FormChecker(req.body);
+  const response = userForm.checkValidRegisterForm();
+  console.log(response);
   res.json(req.body.message);
 };
 
-module.exports = controller;
+module.exports = Register;
