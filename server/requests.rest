@@ -6,10 +6,10 @@ Content-Type: application/json
 
 {
   "message": "test messageaaa",
-  "email": "aa",
-  "password": "aa",
-  "handle": "",
-  "name": ""
+  "email": "nhat.nguyen1125@gmail.com",
+  "password": "Minhnhat34",
+  "handle": "bbbbbbbb$",
+  "name": "dddd ddd    ddd"
 }
 
 ###

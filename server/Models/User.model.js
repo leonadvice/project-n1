@@ -25,6 +25,18 @@ class UserModel {
     this.id = id;
   }
 
+  static async getAllTemp() {
+    return await TempUser.find({}, { _id: 1, email: 1 }, (err, data) => {
+      if (err) {
+        console.log(`this is error message: ${err}`);
+        return false;
+      }
+      console.log(data);
+      console.log('this code run');
+      return data;
+    });
+  }
+
   static async findOneTempByEmail(email) {
     return await TempUser.findOne({ email: email }, { _id: 1 }, (err, data) => {
       if (err) {

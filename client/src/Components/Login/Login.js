@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import checkLogin from '../../Controllers/checkLogin';
 import { Redirect } from 'react-router-dom';
+import checkLogin from '../../Controllers/checkLogin';
+import postRequest from '../../Controllers/postRequest';
 
 export default () => {
   const [isLogin, setIsLogin] = useState(false);
