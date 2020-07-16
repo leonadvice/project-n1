@@ -1,14 +1,6 @@
-const nodeMailer = require('nodemailer');
+const NodeMailer = require('../Controllers/ServerWorker/NodeMailer');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
-const transporter = nodeMailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.email,
-    pass: process.env.pass,
-  },
-});
 
 const userSchema = new Schema({
   email: { type: String, required: true },
@@ -31,8 +23,6 @@ class UserModel {
         console.log(`this is error message: ${err}`);
         return false;
       }
-      console.log(data);
-      console.log('this code run');
       return data;
     });
   }
@@ -43,8 +33,6 @@ class UserModel {
         console.log(`this is error message: ${err}`);
         return false;
       }
-      console.log(data);
-      console.log('this code run');
       return data;
     });
   }
@@ -55,7 +43,6 @@ class UserModel {
         console.log(`this is error message: ${err}`);
         return false;
       }
-      console.log(data);
       return data;
     });
   }
@@ -66,7 +53,6 @@ class UserModel {
         console.log(`this is error message: ${err}`);
         return false;
       }
-      console.log(data);
       return data;
     });
   }
@@ -77,24 +63,22 @@ class UserModel {
         console.log(`this is error message: ${err}`);
         return false;
       }
-      console.log(data);
       return data;
     });
   }
 
-  static createNewUser(user) {
+  static async createNewUser(user) {
     const newUser = new TempUser();
     newUser.email = user.email;
     newUser.password = user.password;
     newUser.handle = user.handle;
     newUser.name = user.name;
-    newUser.save((err, data) => {
-      if (err) {
-        console.log(`this is error message: ${err}`);
-        return false;
-      }
-      return data;
-    });
+    try {
+      return await NodeMailer.sendConfirmRegister(await newUser.save());
+    } catch (error) {
+      console.error(error);
+      return { error: 'something goes wrong with the server' };
+    }
   }
 }
 

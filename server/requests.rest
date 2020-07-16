@@ -5,11 +5,35 @@ POST http://localhost:4000/auth/register
 Content-Type: application/json
 
 {
-  "message": "test messageaaa",
-  "email": "nhat.nguyen1125@gmail.com",
-  "password": "Minhnhat34",
-  "handle": "bbbbbbbb$",
-  "name": "dddd ddd    ddd"
+  "checkValid": ["email","vasfamilyforum@gmail.com"]
+}
+
+###
+
+POST http://localhost:4000/auth/register
+Content-Type: application/json
+
+{
+  "register": 
+    {
+      "message": "test messageaaa",
+      "email": "11112222vasfamilyforum@gmail.com",
+      "password": "Minhnhat34",
+      "handle": "11111222LeonAdvice",
+      "name": "Minh    Nhat"
+    }
+}
+
+###
+POST http://localhost:4000/test
+Content-Type: application/json
+
+{
+  "register": 
+    {
+      "email": "11112222vasfamilyforum@gmail.com",
+      "password": "Minhnhat34"
+    }
 }
 
 ###

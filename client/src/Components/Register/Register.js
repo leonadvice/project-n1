@@ -14,6 +14,7 @@ export default () => {
   const [nameErr, setNameErr] = useState('');
   const [password, setPassword] = useState('');
   const [passwordErr, setPasswordErr] = useState('');
+  const [registerErr, setRegisterErr] = useState('');
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
@@ -22,14 +23,19 @@ export default () => {
 
   async function handleChange(e, field, state, setState, setStateErr) {
     setState(e.target.value);
-    const payLoad = {};
-    payLoad[field] = state;
+    const payLoad = { checkValid: [field, state] };
     const reponse = await postRequest('/auth/register', payLoad);
-    if (reponse.error) {
-      setStateErr(reponse.error);
-    } else {
-      setStateErr('');
-    }
+    console.log(reponse.error);
+    // if (reponse.error) {
+    //   setStateErr(reponse.error);
+    // } else {
+    //   setStateErr('');
+    // }
+  }
+
+  async function handleRegister() {
+    const payLoad = { register: { email, password, handle, name } };
+    console.log(payLoad);
   }
 
   if (isLogin) {
@@ -76,7 +82,8 @@ export default () => {
         />
       </div>
       <div>{passwordErr}</div>
-      <input type="button" value="Register" />
+      <input type="button" value="Register" onClick={() => handleRegister()} />
+      <div>{registerErr}</div>
     </div>
   );
 };
